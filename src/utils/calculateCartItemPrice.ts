@@ -13,9 +13,8 @@ const calculateCartItemPrice = (cartItem: CartItem, basePrices: BasePrice[]): nu
     const optionKeys = Object.keys(sameTypeBasePrices[0].options)
 
     // Step 3: Find the right base price to use for calculation
-    let basePrice = undefined;
 
-    sameTypeBasePrices.find((priceInfo) => {
+    const foundPriceInfo = sameTypeBasePrices.find((priceInfo) => {
 
         // Looking through all the relevant options and making sure all are satisfied before finding the basePrice
         let optionMatched = false;
@@ -33,13 +32,14 @@ const calculateCartItemPrice = (cartItem: CartItem, basePrices: BasePrice[]): nu
         })
 
         if (optionMatched || optionKeys.length === 0) {
-            basePrice = priceInfo['base-price']
+            return priceInfo
         }
     })
 
     let singleItemPrice = 0;
 
-    if (basePrice) {
+    if (foundPriceInfo) {
+        const basePrice = foundPriceInfo['base-price']
 
         singleItemPrice = (basePrice + (basePrice * cartItem['artist-markup'] / 100)) * cartItem.quantity
 
