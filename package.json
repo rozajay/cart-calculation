@@ -11,9 +11,9 @@
     "typescript": "^4.0.2",
     "yargs": "^16.0.3"
   },
-  "name": "redbubble-coding-challenge",
+  "name": "coding-challenge",
   "version": "1.0.0",
-  "description": "Redbubble Coding Challenge: Price Calculator",
+  "description": "Coding Challenge: Price Calculator",
   "main": "index.js",
   "author": "N/A",
   "license": "MIT",

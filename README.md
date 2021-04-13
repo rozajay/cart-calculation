@@ -1,4 +1,4 @@
-# Red bubble coding challenge
+# Code Challenge
 
 This program takes two command-line arguments (one for cart and one for list of base prices) and outputs the total price for the cart.
 
