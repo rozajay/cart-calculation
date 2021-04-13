@@ -84,7 +84,7 @@ describe("Calculate with provided test data", () => {
         expect(sum).toEqual(9500)
     })
 
-    it("Test file cart-11356.json", () => {
+    it.only("Test file cart-11356.json", () => {
         let sum = 0
         testData04.map((cartItem) => {
             sum = sum + calculateCartItemPrice(cartItem, testBasePrices)

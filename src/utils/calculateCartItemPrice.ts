@@ -17,7 +17,7 @@ const calculateCartItemPrice = (cartItem: CartItem, basePrices: BasePrice[]): nu
     const foundPriceInfo = sameTypeBasePrices.find((priceInfo) => {
 
         // Looking through all the relevant options and making sure all are satisfied before finding the basePrice
-        let optionMatched = false;
+        let optionMatched: boolean[] = [];
 
         optionKeys.forEach((optionKey) => {
 
@@ -25,13 +25,12 @@ const calculateCartItemPrice = (cartItem: CartItem, basePrices: BasePrice[]): nu
             const cartItemOption = getProperty(cartItem.options, optionKey)
 
             if (!option.includes(cartItemOption)) {
-                optionMatched = false;
-                return
+                optionMatched.push(false);
             }
-            optionMatched = true;
+            optionMatched.push(true);
         })
 
-        if (optionMatched || optionKeys.length === 0) {
+        if (!optionMatched.includes(false) || optionKeys.length === 0) {
             return priceInfo
         }
     })
